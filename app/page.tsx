@@ -8,6 +8,7 @@ import RecentOrders from "@/components/RecentOrders";
 import About from "@/components/About";
 import Footer from "@/components/Footer";
 
+
 const products = [
   { id: 1, name: "BTS Tote Bag", image: "/assets/mobile/2.avif", price: 199 },
   { id: 2, name: "TV Show T-Shirt", image: "/assets/mobile/3.avif", price: 399 },
