@@ -37,7 +37,7 @@
     "**/*.mts",
     ".next\\dev/types/**/*.ts",
     ".next\\dev/types/**/*.ts"
-  ],
+, "components/About.jsx", "components/Footer.jsx", "components/HeroBanner.jsx", "components/HeroSlideshow.jsx", "components/ProductCard.jsx", "components/RecentOrders.jsx", "components/Testimonials.jsx", "components/YoutubeShorts.jsx"  ],
   "exclude": [
     "node_modules"
   ]
