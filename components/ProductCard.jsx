@@ -1,43 +1,49 @@
-import React from "react";
+import Link from "next/link";
+import Image from "next/image";
 
-const ProductCard = ({ image, name, price }) => {
+export default function ProductCard({
+  id,
+  name,
+  slug,
+  image,
+  price,
+  mockup,
+  customUpload,
+  uploadText
+}) {
   return (
-    <div className="relative group overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-shadow duration-300 cursor-pointer">
-      {/* Product Image */}
-      <img
-        src={image}
-        alt={name}
-        className="w-full h-64 sm:h-72 object-cover transition-transform duration-500 group-hover:scale-105 group-hover:brightness-110"
-      />
+    <div className="relative group overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all p-3 bg-white">
 
-      {/* Slight dark overlay for better text contrast */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/20 to-transparent opacity-10 transition-opacity duration-500"></div>
+      <Link href={`/products/${slug}`} className="block">
+        <Image
+          src={image}
+          alt={name}
+          width={400}
+          height={400}
+          className="rounded-xl object-cover w-full h-60"
+        />
+      </Link>
 
-      {/* Text & Button */}
-      <div className="absolute bottom-4 w-full px-4 flex flex-col items-center">
-        <h3 className="text-white font-semibold text-lg sm:text-xl drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)] mb-1 text-center">
-          {name}
-        </h3>
+      <div className="mt-4">
+        <h3 className="text-lg font-bold">{name}</h3>
+        <p className="text-pink-600 font-semibold">₹{price}</p>
 
-        {/* Price */}
-        <p className="text-white font-semibold text-base sm:text-lg mb-2 px-3 py-1 rounded-full bg-gradient-to-r from-pink-500 to-purple-500 shadow-md">
-          ₹{price}
-        </p>
-
-        {/* WhatsApp Button */}
-        <a
-          href={`https://wa.me/917619538167?text=Hi, I want to order ${encodeURIComponent(
-            name
-          )}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="bg-pink-500 bg-opacity-80 backdrop-blur-sm text-white font-medium px-5 py-2 rounded-full shadow-lg hover:bg-pink-600 hover:scale-105 transition-all duration-300"
-        >
-          💖 Order on WhatsApp
-        </a>
+        {/* Optional: show "Customizable" badge */}
+        {customUpload && (
+          <p className="text-xs text-gray-500 mt-1">✨ Customizable Product</p>
+        )}
       </div>
+
+      <a
+        href={`https://wa.me/917619538167?text=Hi, I want to order ${encodeURIComponent(
+          name
+        )}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="mt-3 block bg-pink-500 text-white text-center py-2 rounded-xl font-medium"
+      >
+        Order on WhatsApp
+      </a>
     </div>
   );
-};
-
-export default ProductCard;
+}

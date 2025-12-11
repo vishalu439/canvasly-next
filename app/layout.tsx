@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
+import { CartProvider } from "@/components/context/CartContext"; // ✅ Import CartProvider
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -86,7 +88,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* ✅ SEO Structured Data (Organization Schema with YouTube + Instagram) */}
+        {/* SEO Structured Data (Organization Schema with YouTube + Instagram) */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -116,7 +118,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        {/* ✅ Entire App Wrapped in CartProvider */}
+        <CartProvider>
+          {children}
+        </CartProvider>
       </body>
     </html>
   );
